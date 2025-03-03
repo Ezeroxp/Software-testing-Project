@@ -8,3 +8,7 @@ When visiting the website, the user will be able to see the albums in a grid and
 - node
 - npm
 ## How to run
+run
+```{shell}
+docker 
+```

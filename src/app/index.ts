@@ -1,5 +1,5 @@
 import axios from "axios";
-import qs from "qs"; // Import qs for URL encoding
+import qs from "qs";
 import dotenv from "dotenv";
 
 dotenv.config();

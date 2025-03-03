@@ -6,7 +6,8 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "tsc -p tsconfig.json",
-        "start": "node dist/app/server.js"
+        "start": "node dist/app/server.js",
+        "dev": "nodemon --legacy-watch --watch src --ext ts --exec ts-node src/app/server.ts"
     },
     "keywords": [],
     "author": "",
@@ -15,7 +16,6 @@
         "axios": "^1.7.9",
         "dotenv": "^16.4.7",
         "fastify": "^5.2.1",
-        "node-fetch": "^3.3.2",
         "qs": "^6.14.0"
     },
     "devDependencies": {
@@ -24,6 +24,7 @@
         "@types/node": "^22.13.5",
         "@types/node-fetch": "^2.6.12",
         "@types/qs": "^6.9.18",
+        "nodemon": "^3.1.9",
         "ts-node": "^10.9.2",
         "typescript": "^5.7.3"
     }

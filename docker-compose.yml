@@ -4,9 +4,7 @@ services:
     build: .
     ports:
       - "3000:3000"
-    environment:
-      NODE_ENV: production
     volumes:
-      - .:/app
+      - .:/app:delegated
       - /app/node_modules
-    command: ["node", "dist/app/server.js"]
+    command: "npm run dev"
