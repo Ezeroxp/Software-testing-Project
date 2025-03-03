@@ -1,0 +1,12 @@
+version: "3"
+services:
+  fastify-app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: ["node", "dist/app/server.js"]
