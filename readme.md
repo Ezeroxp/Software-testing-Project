@@ -8,7 +8,16 @@ When visiting the website, the user will be able to see the albums in a grid and
 - node
 - npm
 ## How to run
-run
+The following command will build the app 
 ```{shell}
-docker 
+docker-compos build
 ```
+The next one will run it
+```{shell}
+docker-compose up 
+```
+The app automatically detects updates in files and runs again when a file is updated. To teardown the program the next command can be used
+```{shell}
+docker-compose down
+```
+The program can also be run using Make by executing the commands build, start and clean respectively.

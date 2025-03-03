@@ -1,6 +1,7 @@
 version: "3"
 services:
   fastify-app:
+    container_name: "fastify"
     build: .
     ports:
       - "3000:3000"
