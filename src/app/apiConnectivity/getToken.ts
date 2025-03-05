@@ -6,12 +6,12 @@ dotenv.config();
 
 const url = "https://accounts.spotify.com/api/token";
 
-const getAccesToken = async (): Promise<string> => {
+export const getAccessToken = async (clientId: string, clientSecret: string): Promise<string> => {
     try {
         const data = qs.stringify({
             grant_type: "client_credentials",
-            client_id: process.env.CLIENT_ID,
-            client_secret: process.env.CLIENT_SECRET,
+            client_id: clientId,
+            client_secret: clientSecret,
         });
 
         const response = await axios.post(url, data, {
@@ -27,4 +27,4 @@ const getAccesToken = async (): Promise<string> => {
     }
 };
 
-console.log(getAccesToken());
+
