@@ -4,10 +4,11 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "vitest",
         "build": "tsc -p tsconfig.json",
         "start": "node dist/app/server.js",
-        "dev": "nodemon --legacy-watch --watch src --ext ts --exec ts-node src/app/server.ts"
+        "dev": "nodemon --legacy-watch --watch src --ext ts --exec ts-node src/app/server.ts",
+        "test": "vitest run",
+        "prepare": "husky install"
     },
     "keywords": [],
     "author": "",
@@ -25,6 +26,7 @@
         "@types/node": "^22.13.5",
         "@types/node-fetch": "^2.6.12",
         "@types/qs": "^6.9.18",
+        "husky": "^8.0.3",
         "nodemon": "^3.1.9",
         "ts-node": "^10.9.2",
         "typescript": "^5.7.3"
