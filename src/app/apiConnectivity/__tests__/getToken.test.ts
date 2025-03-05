@@ -10,9 +10,7 @@ describe("Access Token", async () => {
         const clientSecret = process.env.CLIENT_SECRET!;
 
         const response = await getAccessToken(clientId, clientSecret);
-        console.log(response);
 
         expect(response).not.toBe(undefined);
-
     });
 })
