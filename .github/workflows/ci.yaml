@@ -1,0 +1,24 @@
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        name: Checkout Repository
+
+      - uses: actions/setup-node@v4
+        name: Setup Node
+        with:
+          node-version: '18'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Copy env variables
+        run: cp .env_example .env
+
+      - name: Run tests
+        run: npm run test
