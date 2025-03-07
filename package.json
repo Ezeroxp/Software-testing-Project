@@ -22,22 +22,31 @@
         "sqlite3": "^5.1.7"
     },
     "lint-staged": {
-        "**/*.js": ["eslint --fix", "prettier --write"],
-        "**/*.{css,scss,md}": ["prettier --write"]
+        "**/*.ts": [
+            "eslint --fix",
+            "prettier --write"
+        ],
+        "**/*.{css,scss,md}": [
+            "prettier --write"
+        ]
     },
     "devDependencies": {
+        "@eslint/js": "^9.21.0",
         "@tsconfig/node21": "^21.0.3",
         "@types/axios": "^0.14.4",
         "@types/node": "^22.13.5",
         "@types/node-fetch": "^2.6.12",
         "@types/qs": "^6.9.18",
         "@types/sqlite3": "^3.1.11",
+        "eslint": "^9.21.0",
+        "globals": "^16.0.0",
         "husky": "^8.0.3",
+        "lint-staged": "^15.4.3",
         "nodemon": "^3.1.9",
         "prettier": "3.5.3",
-        "lint-staged": "^15.4.3",
         "ts-node": "^10.9.2",
         "typescript": "^5.7.3",
+        "typescript-eslint": "^8.26.0",
         "vitest": "^3.0.8"
     }
 }
