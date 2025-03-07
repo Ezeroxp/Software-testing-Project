@@ -20,5 +20,9 @@ jobs:
       - name: Copy env variables
         run: cp .env_example .env
 
+      - name: Run linter
+        run: npm run test
+        continue-on-error: true
+
       - name: Run tests
         run: npm run test
