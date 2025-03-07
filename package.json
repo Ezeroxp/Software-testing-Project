@@ -9,7 +9,7 @@
         "dev": "nodemon --legacy-watch --watch src --ext ts --exec ts-node src/app/server.ts",
         "test": "vitest run",
         "prepare": "husky install",
-        "linter": "exlint ."
+        "linter": "eslint --fix && prettier --write ."
     },
     "keywords": [],
     "author": "",
@@ -40,11 +40,13 @@
         "@types/qs": "^6.9.18",
         "@types/sqlite3": "^3.1.11",
         "eslint": "^9.21.0",
+        "eslint-config-prettier": "^10.1.1",
+        "eslint-plugin-prettier": "^5.2.3",
         "globals": "^16.0.0",
         "husky": "^8.0.3",
         "lint-staged": "^15.4.3",
         "nodemon": "^3.1.9",
-        "prettier": "3.5.3",
+        "prettier": "^3.5.3",
         "ts-node": "^10.9.2",
         "typescript": "^5.7.3",
         "typescript-eslint": "^8.26.0",
