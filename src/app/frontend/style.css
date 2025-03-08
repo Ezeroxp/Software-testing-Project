@@ -1,0 +1,31 @@
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#grid-hero {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+#grid-hero div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: min-content;
+    width: auto;
+}
+
+#grid-hero img {
+    width: 100%;
+    height: auto;
+}
+
+/* For debugging */
+* {
+    border: 1px solid red;
+}
