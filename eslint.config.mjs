@@ -14,7 +14,7 @@ export default [
     files: ['**/*.{js,mjs,cjs,ts}', 'src/**/*.{js,ts}'],
     languageOptions: {
       parser: tsparser,
-      globals: { ...globals.browser, process: true },
+      globals: { ...globals.browser, process: true, __dirname: 'readonly' },
       ecmaVersion: 'latest',
       sourceType: 'module',
     },
