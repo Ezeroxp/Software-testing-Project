@@ -1,0 +1,6 @@
+build:
+  docker:
+    web: Dockerfile # Build the "web" service using Dockerfile
+
+run:
+  web: npm start
