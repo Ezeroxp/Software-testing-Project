@@ -20,7 +20,7 @@ server.get('/', async (request, reply) => {
 })
 
 const PORT = Number(process.env.PORT) || 3000
-console.log(Number(process.env.PORT))
+console.log('heroku port:' + Number(process.env.PORT))
 server.listen({ port: PORT, host: '0.0.0.0' }, (err, address) => {
   if (err) {
     console.error(err)
