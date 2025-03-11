@@ -19,7 +19,9 @@ server.get('/', async (request, reply) => {
   return reply.redirect('/public/index.html')
 })
 
-server.listen({ port: 3000, host: '0.0.0.0' }, (err, address) => {
+const PORT = Number(process.env.PORT) || 3000
+console.log('assigned port:' + Number(process.env.PORT))
+server.listen({ port: PORT, host: '0.0.0.0' }, (err, address) => {
   if (err) {
     console.error(err)
     process.exit(1)
