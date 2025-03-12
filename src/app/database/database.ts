@@ -4,7 +4,7 @@ import path from 'path'
 // Define the database file path (stored in the project directory)
 let db: sqlite3.Database
 
-export function createDatabase(databasePath: string | undefined) {
+export function createDatabase(databasePath?: string) {
   if (!databasePath) {
     databasePath = path.join(__dirname, 'database.sqlite')
   }
@@ -22,12 +22,22 @@ export type Album = {
   amount: number
 }
 
-export function initializeDatabase(): Promise<void> {
+export async function initializeDatabase(): Promise<void> {
   return new Promise((resolve, reject) => {
     db.run(
       `CREATE TABLE IF NOT EXISTS albums (
          album_id TEXT PRIMARY KEY,
-         amount INTEGER DEFAULT 1
+         name TEXT,
+         artist TEXT,
+         cover_link TEXT,
+          amount INTEGER DEFAULT 1
+         )`,
+      (err) => (err ? reject(err) : resolve())
+    )
+
+    db.run(
+      `CREATE TABLE IF NOT EXISTS users (
+         code TEXT PRIMARY KEY
          )`,
       (err) => (err ? reject(err) : resolve())
     )
@@ -48,16 +58,32 @@ export function closeDatabase(): Promise<void> {
   })
 }
 
-export function addAlbum(albumId: string): Promise<void> {
+export function addAlbum(
+  albumId: string,
+  name: string,
+  artist: string,
+  cover_link: string
+): Promise<void> {
   return new Promise((resolve, reject) => {
     db.run(
-      `INSERT INTO albums (album_id)
-         VALUES (?)
+      `INSERT INTO albums (album_id, name, artist, cover_link)
+         VALUES (?, ?, ?, ?)
            ON CONFLICT(album_id) DO UPDATE SET amount = amount + 1`,
-      [albumId],
+      [albumId, name, artist, cover_link],
       (err) => (err ? reject(err) : resolve())
     )
   })
+}
+
+export async function addAlbums(albums: any[]) {
+  for (const album of albums) {
+    await addAlbum(
+      album.id,
+      album.name,
+      album.artists[0].name,
+      album.images[0].url
+    )
+  }
 }
 
 export function getAlbumById(albumId: string): Promise<Album | null> {

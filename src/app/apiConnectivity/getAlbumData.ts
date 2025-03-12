@@ -1,6 +1,6 @@
 import axios from 'axios'
 import dotenv from 'dotenv'
-import { getAccessToken } from './getToken'
+import { getUserToken } from './getUserToken'
 
 dotenv.config()
 
