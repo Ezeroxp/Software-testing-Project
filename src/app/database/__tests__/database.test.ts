@@ -46,4 +46,14 @@ describe('Database connection', async () => {
     expect(albums[0]).toBeDefined()
     expect(albums[0]!.amount).toBe(1)
   })
+
+  it('Albums are sorted by amount', async () => {
+    await addAlbum('testAlbum2', 'Name', 'Artist', 'Link')
+    const albums = await getAllAlbums()
+    const count = await getAlbumCount()
+
+    expect(count).toBe(2)
+    expect(albums[0]).toBeDefined()
+    expect(albums[0]!.album_id).toBe('testAlbum2')
+  })
 })

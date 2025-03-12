@@ -113,7 +113,7 @@ export function getAlbumCount(): Promise<number> {
 
 export function getAllAlbums(): Promise<Album[]> {
   return new Promise((resolve, reject) => {
-    db.all(`SELECT * FROM albums`, [], (err, rows) => {
+    db.all(`SELECT * FROM albums ORDER BY amount DESC`, [], (err, rows) => {
       if (err) reject(err)
       else resolve(rows as Album[])
     })
