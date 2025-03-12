@@ -27,7 +27,7 @@ describe('Database connection', async () => {
 
   it('adds an album', async () => {
     const albumId = 'exampleAlbumId'
-    await addAlbum(albumId)
+    await addAlbum(albumId, 'Name', 'Artist', 'Link')
 
     const album = await getAlbumById(albumId)
 
@@ -37,7 +37,7 @@ describe('Database connection', async () => {
   })
 
   it('returns an all albums', async () => {
-    await addAlbum('testAlbum2')
+    await addAlbum('testAlbum2', 'Name', 'Artist', 'Link')
 
     const albums = await getAllAlbums()
     const count = await getAlbumCount()

@@ -19,6 +19,9 @@ export function createDatabase(databasePath?: string) {
 
 export type Album = {
   album_id: string
+  name: string
+  artist: string
+  cover: string
   amount: number
 }
 
