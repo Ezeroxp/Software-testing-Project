@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import dotenv from 'dotenv'
-import { getAccessToken } from '../getToken'
+import { getAccessToken } from '../getDataToken'
 
 dotenv.config()
 

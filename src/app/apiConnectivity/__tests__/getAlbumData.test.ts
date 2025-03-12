@@ -1,7 +1,7 @@
 import { describe, expect, it, beforeAll } from 'vitest'
 import dotenv from 'dotenv'
 import { getAlbumData } from '../getAlbumData'
-import { getAccessToken } from '../getToken'
+import { getAccessToken } from '../getDataToken'
 
 dotenv.config()
 
