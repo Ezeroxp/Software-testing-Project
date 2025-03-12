@@ -34,7 +34,6 @@ describe('getRecentlyPlayed', () => {
   });
 
   it('returns an empty array if no albums have been played recently', async () => {
-    // Aquí podrías mockear la respuesta de Spotify para simular que no hay reproducciones recientes
     const albums = await getRecentlyPlayed(accessToken);
 
     if (albums.length === 0) {
