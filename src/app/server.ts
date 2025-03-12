@@ -9,6 +9,7 @@ import {
   addAlbums,
   createDatabase,
   initializeDatabase,
+  getAllAlbums
 } from './database/database'
 dotenv.config()
 const server = fastify()
@@ -46,6 +47,10 @@ server.get('/userPermission', async (request, reply) => {
 
   getUserPermission(process.env.CLIENT_ID, reply)
 })
+
+server.get('/recentlyPlayed', async (request, reply) => {
+  return await getAllAlbums();
+});
 
 const PORT = Number(process.env.PORT) || 3000
 

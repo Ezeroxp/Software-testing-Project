@@ -21,7 +21,7 @@ export type Album = {
   album_id: string
   name: string
   artist: string
-  cover: string
+  cover_link: string
   amount: number
 }
 
