@@ -16,7 +16,7 @@ export const getUserToken = async (
     const data = qs.stringify({
       grant_type: 'authorization_code',
       code: userCode,
-      redirect_uri: 'http://localhost:3000',
+      redirect_uri: process.env.REDIRECT_URI,
     })
 
     const response = await axios.post(url, data, {

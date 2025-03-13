@@ -1,4 +1,4 @@
-name: Deploy to Heroku
+name: Deploy
 
 on:
   push:
@@ -6,31 +6,15 @@ on:
       - master
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Install Heroku CLI
+      - uses: actions/checkout@v2
+      - name: Install Heroku CLI # <- IMPORTANT!!! Make sure the cli is installed before using the action
         run: |
           curl https://cli-assets.heroku.com/install.sh | sh
-          heroku --version  # Verify installation
-
-      - name: Login to Heroku Container Registry
-        run: |
-          echo ${{ secrets.HEROKU_API_KEY }} | docker login --username=_ --password-stdin registry.heroku.com
-
-      - name: Build and Push Docker Image
-        run: |
-          docker build -t registry.heroku.com/${{ secrets.HEROKU_APP_NAME }}/web .
-          docker push registry.heroku.com/${{ secrets.HEROKU_APP_NAME }}/web
-
-      - name: Release the Docker Image
-        run: |
-          heroku container:release web -a ${{ secrets.HEROKU_APP_NAME }}
-
-      - name: Check Heroku Logs
-        run: |
-          heroku logs --tail -a ${{ secrets.HEROKU_APP_NAME }}
+      - uses: akhileshns/heroku-deploy@v3.14.15 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{secrets.HEROKU_APP_NAME}} #Must be unique in Heroku
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
