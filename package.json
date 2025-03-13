@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "build": "tsc -p tsconfig.json",
+        "build": "tsc -p tsconfig.json && cp -r src/app/frontend dist/app/frontend",
         "start": "node dist/app/server.js",
         "dev": "nodemon --legacy-watch --watch src --ext ts --exec ts-node src/app/server.ts",
         "test": "vitest run --silent",

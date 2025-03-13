@@ -1,5 +1,8 @@
 import querystring from 'node:querystring'
 import { FastifyReply } from 'fastify'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 export const getUserPermission = (clientId: string, reply: FastifyReply) => {
   var state = '1234567890abcd'
@@ -11,7 +14,7 @@ export const getUserPermission = (clientId: string, reply: FastifyReply) => {
         response_type: 'code',
         client_id: clientId,
         scope: scope,
-        redirect_uri: 'http://localhost:3000',
+        redirect_uri: process.env.REDIRECT_URI,
         state: state,
       })
   )
