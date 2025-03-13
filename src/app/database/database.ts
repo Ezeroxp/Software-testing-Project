@@ -22,7 +22,7 @@ export type Album = {
   name: string
   artist: string
   cover_link: string
-  amount: number
+  amount?: number
 }
 
 export async function initializeDatabase(): Promise<void> {
@@ -80,12 +80,7 @@ export function addAlbum(
 
 export async function addAlbums(albums: any[]) {
   for (const album of albums) {
-    await addAlbum(
-      album.id,
-      album.name,
-      album.artists[0].name,
-      album.images[0].url
-    )
+    await addAlbum(album.id, album.name, album.artist, album.cover_link)
   }
 }
 

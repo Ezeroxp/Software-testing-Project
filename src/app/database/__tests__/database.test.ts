@@ -1,4 +1,4 @@
-import { beforeAll, afterAll, it, expect, describe } from 'vitest'
+import { beforeAll, afterAll, it, expect, describe, beforeEach } from 'vitest'
 import {
   initializeDatabase,
   closeDatabase,
@@ -7,9 +7,10 @@ import {
   getAlbumCount,
   getAllAlbums,
   createDatabase,
+  addAlbums,
 } from '../database'
 
-beforeAll(async () => {
+beforeEach(async () => {
   createDatabase(':memory:')
   await initializeDatabase()
 })
@@ -36,7 +37,28 @@ describe('Database connection', async () => {
     expect(album!.amount).toBe(1)
   })
 
+  it('adds multiple albums', async () => {
+    await addAlbums([
+      {
+        id: 'exampleAlbumId1',
+        name: 'name1',
+        artists: [{ name: 'artist1' }],
+        images: [{ url: 'testUrl1' }],
+      },
+      {
+        id: 'exampleAlbumId2',
+        name: 'name2',
+        artists: [{ name: 'artist2' }],
+        images: [{ url: 'testUrl2' }],
+      },
+    ])
+
+    const count = await getAlbumCount()
+    expect(count).toBe(2)
+  })
+
   it('returns an all albums', async () => {
+    await addAlbum('testAlbum1', 'Name', 'Artist', 'Link')
     await addAlbum('testAlbum2', 'Name', 'Artist', 'Link')
 
     const albums = await getAllAlbums()
@@ -48,7 +70,10 @@ describe('Database connection', async () => {
   })
 
   it('Albums are sorted by amount', async () => {
+    await addAlbum('testAlbum1', 'Name', 'Artist', 'Link')
     await addAlbum('testAlbum2', 'Name', 'Artist', 'Link')
+    await addAlbum('testAlbum2', 'Name', 'Artist', 'Link')
+
     const albums = await getAllAlbums()
     const count = await getAlbumCount()
 
