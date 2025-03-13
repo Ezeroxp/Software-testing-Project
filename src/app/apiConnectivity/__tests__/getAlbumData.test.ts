@@ -8,6 +8,7 @@ dotenv.config()
 describe('getAlbumData', () => {
   const albumId = '4aawyAB9vmqN3uQ7FjRGTy'
   let accessToken: string
+
   beforeAll(async () => {
     const clientId = process.env.CLIENT_ID!
     const clientSecret = process.env.CLIENT_SECRET!
