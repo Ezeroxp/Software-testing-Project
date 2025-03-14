@@ -11,6 +11,7 @@ const length = data.length
 const hero = document.getElementById('grid-hero')
 
 // Loop through the data and create a div for each album
+// On click redirect to each album spotify website
 for (let i = 0; i < length && i < 30; i++) {
   const album = data[i]
   const albumDiv = document.createElement('div')

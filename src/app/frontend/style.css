@@ -1,31 +1,81 @@
-h1 {
-  text-align: center;
-  margin-top: 20px;
+/*reset*/
+* {
+  /*border: 1px solid red;*/
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-#grid-hero {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 20px;
-  max-width: 70%;
-  margin: 0 auto;
-}
-
-#grid-hero div {
+/*body style*/
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background: linear-gradient(135deg, #f0f4ff, #7bf3ab);
+  color: #333;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: min-content;
-  width: auto;
 }
 
+/*title style*/
+h1 {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 2.5rem;
+  color: #1db954;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+/*main grid style*/
+#grid-hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 90%;
+  width: 100%;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3px);
+}
+
+/*grid subdiv style*/
+#grid-hero div {
+  background-color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  border-radius: 15px;
+  overflow: hidden;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/*grid subdiv hover style*/
+#grid-hero div:hover {
+  transform: scale(1.35);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/*grid img style*/
 #grid-hero img {
   width: 100%;
   height: auto;
+  display: block;
+  border-bottom: 1px solid #eee;
 }
 
-/* For debugging */
-* {
-  border: 1px solid red;
+/*footer style*/
+#footer {
+  margin-top: auto;
+  padding: 20px 0;
+  width: 100%;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #555;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-top: 1px solid #ddd;
 }
